@@ -10,6 +10,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.aghogho.coinpaprikaapirxjavamvvm.presentation.CoinPaprikaListScreen
+import com.aghogho.coinpaprikaapirxjavamvvm.presentation.Screen
 import com.aghogho.coinpaprikaapirxjavamvvm.ui.theme.CoinpaprikaApiRxJavaMVVMTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,12 +24,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CoinpaprikaApiRxJavaMVVMTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
+                Surface(color = MaterialTheme.colors.background) {
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.CoinPaprikaListScreen.route
+                    ) {
+                        composable(
+                            route = Screen.CoinPaprikaListScreen.route
+                        ) {
+                            CoinPaprikaListScreen(navController)
+                        }
+                    }
                 }
             }
         }

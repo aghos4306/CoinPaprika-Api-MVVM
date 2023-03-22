@@ -1,6 +1,8 @@
 package com.aghogho.coinpaprikaapirxjavamvvm.di
 
 import com.aghogho.coinpaprikaapirxjavamvvm.data.remote.dto.CoinPaprikaApi
+import com.aghogho.coinpaprikaapirxjavamvvm.data.repository.CoinPaprikaRepositoryImpl
+import com.aghogho.coinpaprikaapirxjavamvvm.domain.repository.CoinPaprikaRepository
 import com.aghogho.coinpaprikaapirxjavamvvm.util.Constants.COIN_PAPRIKA_BASE_URL
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
@@ -24,6 +26,12 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CoinPaprikaApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoinRepository(coinPaprikaApi: CoinPaprikaApi): CoinPaprikaRepository {
+        return CoinPaprikaRepositoryImpl(coinPaprikaApi)
     }
 
 }
