@@ -31,7 +31,7 @@ fun CoinPaprikaListScreen(
                 CoinPaprikaListItem(
                     coin = coin,
                     onItemClick = {
-                        navController.navigate(Screen.CoinPaprikaDetailScreen.route)
+                        navController.navigate(Screen.CoinPaprikaDetailScreen.route + "/${coin.id}")
                     }
                 )
             }
