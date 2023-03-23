@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +35,7 @@ fun CoinPaprikaListScreen(
                         navController.navigate(Screen.CoinPaprikaDetailScreen.route + "/${coin.id}")
                     }
                 )
+                Divider()
             }
         }
         if (state.error.isNotBlank()) {

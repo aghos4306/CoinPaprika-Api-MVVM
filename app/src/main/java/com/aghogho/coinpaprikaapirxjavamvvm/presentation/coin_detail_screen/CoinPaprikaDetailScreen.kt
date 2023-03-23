@@ -50,33 +50,36 @@ fun CoinPaprikaDetailScreen(
                                 .align(Alignment.CenterVertically)
                                 .weight(2f)
                         )
-                        Spacer(modifier = Modifier.height(15.dp))
-                        Text(
-                            text = coin.description,
-                            style = MaterialTheme.typography.body2
-                        )
-                        Spacer(modifier = Modifier.height(15.dp))
-                        Text(
-                            text = "Tags",
-                            style = MaterialTheme.typography.h4
-                        )
-                        Spacer(modifier = Modifier.height(15.dp))
-                        FlowRow(
-                            mainAxisSpacing = 10.dp,
-                            crossAxisSpacing = 10.dp,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            coin.tags.forEach { tag ->
-                                CoinTag(tag = tag)
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(15.dp))
-                        Text(
-                            text = "Team Members",
-                            style = MaterialTheme.typography.h4
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
+
+
                     }
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Text(
+                        text = coin.description,
+                        style = MaterialTheme.typography.body2
+                    )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Text(
+                        text = "Tags",
+                        style = MaterialTheme.typography.h4
+                    )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    FlowRow(
+                        mainAxisSpacing = 10.dp,
+                        crossAxisSpacing = 10.dp,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        coin.tags.forEach { tag ->
+                            CoinTag(tag = tag)
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Text(
+                        text = "Team Members",
+                        style = MaterialTheme.typography.h4
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                }
 //                    items(coin.team) { teamMember ->
 //                        TeamListItem(
 //                            teamMember = teamMember,
@@ -86,7 +89,6 @@ fun CoinPaprikaDetailScreen(
 //                        )
 //                        Divider()
 //                    }
-                }
             }
         }
         if(state.error.isNotBlank()) {
