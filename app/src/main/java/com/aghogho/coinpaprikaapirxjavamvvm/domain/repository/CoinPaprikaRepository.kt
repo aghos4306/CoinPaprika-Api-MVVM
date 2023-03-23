@@ -5,8 +5,8 @@ import com.aghogho.coinpaprikaapirxjavamvvm.data.remote.dto.coindetails.CoinDeta
 
 interface CoinPaprikaRepository {
 
-    fun getAllCoins(): List<CoinPaprikaDto>
+    suspend fun getAllCoins(): List<CoinPaprikaDto>
 
-    fun getCoinById(coinId: String): CoinDetailDto
+    suspend fun getCoinById(coinId: String): CoinDetailDto
 
 }

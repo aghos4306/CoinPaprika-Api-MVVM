@@ -13,16 +13,15 @@ import javax.inject.Inject
 class GetAllCoinsUseCase @Inject constructor(
     private val repository: CoinPaprikaRepository
 ){
-
     operator fun invoke(): Flow<Resource<List<CoinPaprika>>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<CoinPaprika>>())
             val paprikaCoins = repository.getAllCoins().map { it.toCoin() }
-            emit(Resource.Success(paprikaCoins))
+            emit(Resource.Success<List<CoinPaprika>>(paprikaCoins))
         } catch (httpExp: HttpException) {
-            emit(Resource.Error(httpExp.localizedMessage))
+            emit(Resource.Error<List<CoinPaprika>>(httpExp.localizedMessage))
         } catch (ioExp: IOException) {
-            emit(Resource.Error("Please check your connection, couldn't connect to server"))
+            emit(Resource.Error<List<CoinPaprika>>("Please check your connection, couldn't connect to server"))
         }
     }
 

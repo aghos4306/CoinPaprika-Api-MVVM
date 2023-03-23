@@ -9,11 +9,11 @@ import javax.inject.Inject
 class CoinPaprikaRepositoryImpl @Inject constructor(
     private val coinPaprikaApi: CoinPaprikaApi
 ): CoinPaprikaRepository{
-    override fun getAllCoins(): List<CoinPaprikaDto> {
+    override suspend fun getAllCoins(): List<CoinPaprikaDto> {
         return coinPaprikaApi.getAllCoins()
     }
 
-    override fun getCoinById(coinId: String): CoinDetailDto {
+    override suspend fun getCoinById(coinId: String): CoinDetailDto {
         return coinPaprikaApi.getCoinById(coinId)
     }
 
