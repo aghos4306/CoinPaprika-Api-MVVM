@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.dp
 fun CoinTag(tag: String) {
     Box(
         modifier = Modifier
-            .padding(10.dp)
             .border(
                 width = 1.dp,
                 color = MaterialTheme.colors.primary,
                 shape = RoundedCornerShape(100.dp)
             )
+            .padding(10.dp)
 
     ) {
         Text(
