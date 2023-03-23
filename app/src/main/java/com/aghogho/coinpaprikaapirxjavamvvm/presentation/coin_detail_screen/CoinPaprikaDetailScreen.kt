@@ -2,6 +2,7 @@ package com.aghogho.coinpaprikaapirxjavamvvm.presentation.coin_detail_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -80,15 +81,17 @@ fun CoinPaprikaDetailScreen(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                 }
-//                    items(coin.team) { teamMember ->
-//                        TeamListItem(
-//                            teamMember = teamMember,
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .padding(10.dp)
-//                        )
-//                        Divider()
-//                    }
+
+                items(coin.team) { teamMember ->
+                    TeamListItem(
+                        teamMember = teamMember,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp)
+                    )
+                    Divider()
+                }
+
             }
         }
         if(state.error.isNotBlank()) {
