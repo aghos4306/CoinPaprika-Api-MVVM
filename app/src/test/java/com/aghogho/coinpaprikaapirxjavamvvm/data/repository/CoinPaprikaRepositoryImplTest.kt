@@ -22,6 +22,11 @@ class CoinPaprikaRepositoryImplTest {
         isNew = false, type = "Coin"
     )
 
+    private val coinThree = CoinPaprikaDto(id = "3", isActive = true,
+        name = "Tether", rank = 5, symbol = "THE",
+        isNew = false, type = "Coin"
+    )
+
     private val coinDetail = CoinDetailDto(
         description = "hottest coin", development_status = "completed", first_data_at = "2nd March 2014", hardware_wallet = false,
         hash_algorithm = "algorithm", id = "1", is_new = false, isActive = false, last_data_at = "2nd March 2018",
@@ -41,32 +46,32 @@ class CoinPaprikaRepositoryImplTest {
         links = Links(explorer = listOf("explorer"), facebook = listOf("facebook"), reddit = listOf("reddit"),
             source_code = listOf("source_code"), website = listOf("www.coin.com"), youtube = listOf("youtube.com"))
     )
-    private val listOfCoins = listOf<CoinPaprikaDto>(coinOne, coinTwo)
+    private val listOfCoins = listOf<CoinPaprikaDto>(coinOne, coinTwo, coinThree)
 
     @Mock
     lateinit var coinPaprikaApi: CoinPaprikaApi
 
-    private lateinit var classUnderTest: CoinPaprikaRepositoryImpl
+    private lateinit var coinPaprikaRepositoryImpl: CoinPaprikaRepositoryImpl
 
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        classUnderTest = CoinPaprikaRepositoryImpl(coinPaprikaApi)
+        coinPaprikaRepositoryImpl = CoinPaprikaRepositoryImpl(coinPaprikaApi)
     }
 
     @Test
     fun `getAllCoins() should return list of all Coins from api`() = runBlocking {
         val expectedResult = listOfCoins
-        whenever(classUnderTest.getAllCoins()).thenReturn(listOfCoins)
-        val result = classUnderTest.getAllCoins()
+        whenever(coinPaprikaRepositoryImpl.getAllCoins()).thenReturn(listOfCoins)
+        val result = coinPaprikaRepositoryImpl.getAllCoins()
         Assert.assertEquals(expectedResult, result)
     }
 
     @Test
     fun `getCoinById() should return specific coin detail content`() = runBlocking {
         val expectedResult = coinDetail
-        whenever(classUnderTest.getCoinById("1")).thenReturn(coinDetail)
-        val result = classUnderTest.getCoinById("1")
+        whenever(coinPaprikaRepositoryImpl.getCoinById("1")).thenReturn(coinDetail)
+        val result = coinPaprikaRepositoryImpl.getCoinById("1")
         Assert.assertEquals(expectedResult, result)
     }
 
